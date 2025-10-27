@@ -25,6 +25,12 @@ export interface AutomationRequest {
     };
     header_id: string;
     total_steps: number;
+    run_config: {
+      isAsync?: boolean; // 是否异步执行
+      isClosePage?: boolean; // 执行完案例后是否关闭窗口
+      isLogout?: boolean;
+      isConfirm?: boolean;
+    }
   };
 }
 
@@ -32,6 +38,7 @@ const AUTOMATION_ENDPOINT = "http://localhost:3002/routers/auto/start";
 
 const AUTOMATION_CASE_NAMES = [
   "IMLC_001",
+  "TEST_001",
 ] as const;
 
 const automationCaseSchema = z.object({
@@ -67,6 +74,12 @@ const automationTool = tool(
         user_data: DEFAULT_USER_DATA,
         header_id: headerId,
         total_steps: DEFAULT_TOTAL_STEPS,
+        run_config: {
+          isAsync: false,
+          isClosePage: false,
+          isLogout: false,
+          isConfirm: false
+        }
       },
     };
 
