@@ -45,3 +45,6 @@ credentials.json
 
 # LangGraph API
 .langgraph_api
+
+#pnpm
+pnpm-lock.yaml
