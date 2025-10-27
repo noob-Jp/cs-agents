@@ -27,6 +27,6 @@ export function ensureConfiguration(
   return {
     systemPromptTemplate:
       configurable.systemPromptTemplate ?? SYSTEM_PROMPT_TEMPLATE,
-    model: configurable.model ?? "openai/qwen-plus",
+      model: configurable.model ?? process.env.MODEL_NAME
   };
 }
